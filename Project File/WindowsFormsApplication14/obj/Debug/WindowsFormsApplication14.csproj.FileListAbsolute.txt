@@ -35,3 +35,12 @@ C:\Users\Mostafax\Desktop\Project-File(1)\Project File\WindowsFormsApplication14
 C:\Users\Mostafax\Desktop\Project-File(1)\Project File\WindowsFormsApplication14\obj\Debug\WindowsFormsApplication14.MainForm.resources
 C:\Users\Mostafax\Desktop\Project-File(1)\Project File\WindowsFormsApplication14\obj\Debug\WindowsFormsApplication14.Properties.Resources.resources
 C:\Users\Mostafax\Desktop\Project-File(1)\Project File\WindowsFormsApplication14\obj\Debug\WindowsFormsApplication14.csproj.GenerateResource.Cache
+C:\Users\Mostafax\Documents\GitHub\File-Project\Project File\WindowsFormsApplication14\bin\Debug\WindowsFormsApplication14.exe.config
+C:\Users\Mostafax\Documents\GitHub\File-Project\Project File\WindowsFormsApplication14\obj\Debug\WindowsFormsApplication14.exe
+C:\Users\Mostafax\Documents\GitHub\File-Project\Project File\WindowsFormsApplication14\obj\Debug\WindowsFormsApplication14.pdb
+C:\Users\Mostafax\Documents\GitHub\File-Project\Project File\WindowsFormsApplication14\bin\Debug\WindowsFormsApplication14.exe
+C:\Users\Mostafax\Documents\GitHub\File-Project\Project File\WindowsFormsApplication14\bin\Debug\WindowsFormsApplication14.pdb
+C:\Users\Mostafax\Documents\GitHub\File-Project\Project File\WindowsFormsApplication14\obj\Debug\WindowsFormsApplication14.csprojResolveAssemblyReference.cache
+C:\Users\Mostafax\Documents\GitHub\File-Project\Project File\WindowsFormsApplication14\obj\Debug\WindowsFormsApplication14.MainForm.resources
+C:\Users\Mostafax\Documents\GitHub\File-Project\Project File\WindowsFormsApplication14\obj\Debug\WindowsFormsApplication14.Properties.Resources.resources
+C:\Users\Mostafax\Documents\GitHub\File-Project\Project File\WindowsFormsApplication14\obj\Debug\WindowsFormsApplication14.csproj.GenerateResource.Cache

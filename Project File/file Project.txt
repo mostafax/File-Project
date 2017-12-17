@@ -1,0 +1,10 @@
+Book Management System
+####REQUIREMENTS#####
+Project Using C#
+GUI
+We need to store data about books and authors
+in two different files.
+1)File Book has (serialNo, bookName, publishYear, authorNo)   //publishYear Will be Used for Searching And Returning The bookName 
+//authorNo==ID Will be the Connection Between Files
+2)File Author has (id, authorName, email)  // authorName Prints all His own Written Books
+##############End OF File############

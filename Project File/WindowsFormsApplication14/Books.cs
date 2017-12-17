@@ -71,6 +71,9 @@ static public class BooksFunctions
                     found = true;
                     x++;
                 }
+
+
+
             }
         }
         if (found == false)
