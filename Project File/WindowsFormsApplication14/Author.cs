@@ -2,7 +2,7 @@
 
 static public class AuthorFunctions
 {
-    static public void Write_Author(Author s)
+    static public void Write_Author(Author s) //Function to write new author in the Author File
     {
         FileStream FS = new FileStream("Author.txt", FileMode.Append);
         StreamWriter SW = new StreamWriter(FS);
@@ -17,8 +17,12 @@ static public class AuthorFunctions
         SW.Write(Email, 0, 25);
         SW.Close();
     }
-    static public string Searching_Author(string s)
+    static public string Searching_Author(string s) //To search for Author Name entered
     {
+        if (!(File.Exists("Author.txt")))
+        {                                  //Inorder to handle the existence of the file
+            return null;
+        }
         FileStream fs = new FileStream("Author.txt", FileMode.Open);
         StreamReader sr = new StreamReader(fs);
         char[] record = new char[50];
@@ -32,7 +36,7 @@ static public class AuthorFunctions
             if (s.CompareTo(str.Substring(5, 20)) == 0)
             {
                 found = true;
-                 ID = str.Substring(0, length: 5);
+                ID = str.Substring(0, 5);
                 break;
             }
             
@@ -44,12 +48,16 @@ static public class AuthorFunctions
         }
         else
         { 
-            return int.Parse(ID).ToString();
+            return int.Parse(ID).ToString();         //To make sure that their are no ("spaces" or "\0") in the string before it is returned
         }
 
     }
-    static public Author[] Author_read()
+    static public Author[] Author_read()             //To Read and Display all Authors
     {
+        if (!(File.Exists("Author.txt")))
+        {                                            //Inorder to handle the existence of the file
+            return null;
+        }
         FileStream fs = new FileStream("Author.txt", FileMode.Open);
         StreamReader sr = new StreamReader(fs);
         char[] id = new char[5];
@@ -65,9 +73,9 @@ static public class AuthorFunctions
             sr.Read(id, 0, 5);
             sr.Read(name, 0, 20);
             sr.Read(Email, 0, 25);
-            Record[i].id = int.Parse(new string(id)).ToString();
-            Record[i].authorName = new string(name).Trim(' ', '\0');
-            Record[i].email = new string(Email).Trim(' ', '\0');
+            Record[i].id = int.Parse(new string(id)).ToString();               //To make sure that their are no ("spaces" or "\0") in the string
+            Record[i].authorName = new string(name).Trim(' ', '\0');           //To make sure that their are no ('spaces' or '\0') in the string
+            Record[i].email = new string(Email).Trim(' ', '\0');               //To make sure that their are no ('spaces' or '\0') in the string
             i++;
         }
         sr.Close();
@@ -80,8 +88,12 @@ static public class AuthorFunctions
             return null;
         }
     }
-    static public bool Author_Checker(Author A)
+    static public bool Author_Checker(Author A)           //To Check if there was a conflict in the Author ID with the already exsiting records
     {
+        if (!(File.Exists("Author.txt")))
+        {                                                 //To check file existence
+            return false;
+        }
         FileStream fs = new FileStream("Author.txt", FileMode.Open);
         StreamReader sr = new StreamReader(fs);
         char[] ID = new char[5];
@@ -93,7 +105,7 @@ static public class AuthorFunctions
         for(int i = 0; i < Authors.Length; i++)
         {
             sr.Read(ID, 0, 5);
-            sr.Read(notused, 0, 45);
+            sr.Read(notused, 0, 45);                        //To read and access the next record smoothly
             s = new string(ID).Trim(' ','\0');
             if (A.id.ToString().CompareTo(s) == 0)
             {
