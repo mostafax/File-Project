@@ -59,8 +59,6 @@ namespace WindowsFormsApplication14
 
         private void Addddd_Click(object sender, EventArgs e)  //Adding Button in the Main Panel
         {
-
-
             if (BookCheckBox.Checked == true)   //To Change panels between Main Panel and Adding Books Panel
             {
                 addnewbook.Visible = true;
@@ -91,7 +89,7 @@ namespace WindowsFormsApplication14
             bool Checked = false;
             for (int i = 0; i < SerialTextBox.TextLength; i++)              //for checking whether the new text entered is Digit or not
             {
-                if (!char.IsDigit(SerialTextBox.Text[i]))                   //ISDigit is a function to check if it's digit or not
+                if (!char.IsDigit(SerialTextBox.Text[i]))                   //ISDigit is a function to check if it's digit or not number
                 {
                     SerialTextBox.Text = SerialTextBox.Text.Remove(i, 1);   //to remove the new text entered when it's not digit
                     Checked = true;
@@ -113,9 +111,9 @@ namespace WindowsFormsApplication14
             for (int i = 0; i < AuthorNumTextBox.TextLength; i++)                       //for checking whether the new text entered is Digit or not
             {
                 if (!char.IsDigit(AuthorNumTextBox.Text[i]))                            //ISDigit is a function to check if it's digit or not
-                { 
+                {
                     AuthorNumTextBox.Text = AuthorNumTextBox.Text.Remove(i, 1);         //to remove the new text entered when it's not digit(number)
-                    Checked = true; 
+                    Checked = true;
                     i--;
                 }
             }
@@ -123,20 +121,19 @@ namespace WindowsFormsApplication14
             AuthorNumTextBox.SelectionStart = tmp;               //to modify the position if the user made a wrong entry
             authnum = AuthorNumTextBox.Text;                     //to copy the string in the textbox to the authnum string
             CheckTextBoxes();                                    //to call checktextboxes Function
-        } 
+        }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)       //book checkbox
         {
             if (BookCheckBox.Checked == true)          //condition to enable the buttons of the main panel when BookCheckBox was chosen
             {
-                AuthorCheckBox.Enabled = false;  
+                AuthorCheckBox.Checked = false;
                 AddingButton.Enabled = true;
                 DisplayingButton.Enabled = true;
                 SearchingButton.Enabled = true;
             }
             if (BookCheckBox.Checked == false)         //condition to disable the buttons of the main panel when BookCheckBox was not chosen
             {
-                AuthorCheckBox.Enabled = true;
                 AddingButton.Enabled = false;
                 DisplayingButton.Enabled = false;
                 SearchingButton.Enabled = false;
@@ -154,15 +151,14 @@ namespace WindowsFormsApplication14
         private void AuthorCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (AuthorCheckBox.Checked == true)    //condition to enable the buttons of the main panel if the AuthorCheckBox was chosen
-            {  
-                BookCheckBox.Enabled = false;
+            {
+                BookCheckBox.Checked = false;
                 AddingButton.Enabled = true;
                 DisplayingButton.Enabled = true;
                 SearchingButton.Enabled = true;
             }
             if (AuthorCheckBox.Checked == false)   //condition to disable the buttons of the main panel if the AuthorCheckBox was not chosen
-            {  
-                BookCheckBox.Enabled = true;
+            {
                 AddingButton.Enabled = false;
                 DisplayingButton.Enabled = false;
                 SearchingButton.Enabled = false;
@@ -197,7 +193,7 @@ namespace WindowsFormsApplication14
                     Lines[index++] = "Book Name: " + BookArray[i].bookName;
                     Lines[index++] = "Publish Year: " + BookArray[i].publishYear;
                     Lines[index++] = "Author Number: " + BookArray[i].authorNo;
-                    if (i != BookArray.Length - 1)               
+                    if (i != BookArray.Length - 1)
                         Lines[index++] = "----------------------------------------";   //to handle the last record inorder not to display seperator line after the last record
                 }
                 textBox1.Lines = Lines;                                                //function textBox1.Lines is to put each single element in the array in a single line
@@ -217,10 +213,10 @@ namespace WindowsFormsApplication14
         }
 
         private void BTN_Searching_Click(object sender, EventArgs e)      //Searching for Publish Year Button
-        { 
+        {
             Book[] books;
             books = BooksFunctions.Search(yearsearch, 1);                 //to call searching function of the book by the Publish Year
-            if (books == null) 
+            if (books == null)
             {
                 MessageBox.Show("This Book is not found");
                 TXT_Searching.Text = "";
@@ -228,7 +224,7 @@ namespace WindowsFormsApplication14
             else
             {
                 string[] Lines = new string[(books.Length * 5) - 1];      //Array of strings to Put each field in a line with a seperator between each record
-                int index = 0;                                      
+                int index = 0;
                 for (int i = 0; i < books.Length; i++)                    //Loop to put each field in the string array inorder to display them
                 {
                     Lines[index++] = "Serial Number: " + books[i].serialNo;
@@ -273,18 +269,16 @@ namespace WindowsFormsApplication14
         {
 
         }
-
         private void label6_Click(object sender, EventArgs e)
         {
 
         }
-
         private void button1_Click_2(object sender, EventArgs e)        //Searching Button in the Author Name Search Panel
         {
             Book[] books;
             string num = AuthorFunctions.Searching_Author(name);
             books = BooksFunctions.Search(num, 2);                       //To call the Searching Function()
-            if (books == null )
+            if (books == null)
             {
                 MessageBox.Show("Author name has no books available");
                 aftersearch.Text = "";
@@ -302,11 +296,9 @@ namespace WindowsFormsApplication14
                     if (i != books.Length - 1)
                         Lines[index++] = "----------------------------------------";    //to handle the last record inorder not to display seperator line after the last record
                 }
-              aftersearch.Lines = Lines;          //function aftersearch.Lines is to put each single element in the array in a single line 
-                 
+                aftersearch.Lines = Lines;          //function aftersearch.Lines is to put each single element in the array in a single line 
             }
         }
-
         private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
             NameTextBox.MaxLength = 20;           //to Adjust the the Max Length of the Name TextBox
@@ -320,7 +312,6 @@ namespace WindowsFormsApplication14
             email = EmailTextBox.Text;
             CheckAuthorTextBoxes();               //to call the function for checking textboxes
         }
-
         private void AddingnewAuthor_Click(object sender, EventArgs e) //Button of Add in the new Author adding Panel
         {
             Author s;
@@ -342,7 +333,7 @@ namespace WindowsFormsApplication14
         }
 
         private void button3_Click(object sender, EventArgs e)      //Cancel Button in the Adding Author Panel
-        { 
+        {
             Main.Visible = true;
             AddingAuthorPanel.Visible = false;
         }
@@ -354,7 +345,6 @@ namespace WindowsFormsApplication14
             NameSearchingtextbox.Text = "";
             aftersearch.Text = "";
         }
-
         private void textBox3_TextChanged_1(object sender, EventArgs e)    //Author ID textbox in the Adding Panel
         {
             if (IDTextBox.Text == "") return;
@@ -374,9 +364,7 @@ namespace WindowsFormsApplication14
             IDTextBox.SelectionStart = tmp;                         //To set the position of the text entry inorder to write new char smoothly
             authnum = IDTextBox.Text;
             CheckAuthorTextBoxes();                                 //To call Check Author Text Boxes function {for more details Go to definition :) }
-
         }
-
         private void NameSearchingtextbox_TextChanged(object sender, EventArgs e)   //Name Searching Text Box in Author Name Searching Panel
         {
             name = NameSearchingtextbox.Text;
@@ -425,9 +413,69 @@ namespace WindowsFormsApplication14
 
         }
 
+        private void ClosingButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void CheckAuthorTextBoxes()
         {
-            if ((IDTextBox.Text != "") && (NameTextBox.Text != "")&&(EmailTextBox.Text !=""))
+            if ((IDTextBox.Text != "") && (NameTextBox.Text != "") && (EmailTextBox.Text != ""))
             {
                 AddingnewAuthor.Enabled = true; //If all textboxes are written the Adding button will be enabled
             }
@@ -451,7 +499,7 @@ namespace WindowsFormsApplication14
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e) //Publish Year Textbox
-        {                                                      
+        {
             PublishYearTextBox.MaxLength = 4;                            //To adjust the Max Length of the Publish Year TextBox
             if (PublishYearTextBox.Text == "") return;
             int tmp = PublishYearTextBox.SelectionStart;                 //to access the position of the of text entering
@@ -465,7 +513,7 @@ namespace WindowsFormsApplication14
                     i--;
                 }
             }
-            if (Checked) tmp--;                              
+            if (Checked) tmp--;
             PublishYearTextBox.SelectionStart = tmp;    //To set the new position of the text after removing
             year = PublishYearTextBox.Text;
             CheckTextBoxes();                           //to check the Text Boxes for more detials { go to definition :) }
@@ -483,7 +531,7 @@ namespace WindowsFormsApplication14
             h.serialNo = serial;
             h.bookName = name;
             h.publishYear = year;
-            h.authorNo = authnum; 
+            h.authorNo = authnum;
             if (BooksFunctions.Book_Checker(h))            //To Check if there was a conflict in the Serial Number
             {
                 MessageBox.Show("There was a conflict in the Book serial number and was unsuccessfully added Please try again");

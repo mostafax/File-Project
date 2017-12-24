@@ -5,13 +5,11 @@ static public class BooksFunctions
 {
     static public void write(Book b) //To write new book in the File
     {
-
         FileStream FS = new FileStream("Book.txt", FileMode.Append);
         StreamWriter SW = new StreamWriter(FS);
         string str = b.serialNo + "@" + b.bookName + "@" + b.publishYear + "@" + b.authorNo + "#";
         SW.Write(str);
         SW.Close();
-
     }
     static public Book[] read() // To read all Books in the file inorder to display them
     {
@@ -21,15 +19,15 @@ static public class BooksFunctions
         }
         FileStream fs = new FileStream("Book.txt", FileMode.Open);
         StreamReader sr = new StreamReader(fs);
-        string[] records, fields;
-        records = sr.ReadToEnd().Split('#');
         if (fs.Length==0)                        //If the Books File exists but it's empty
         {
             sr.Close();
             return null;
         }
-        Book[] books = new Book[records.Length - 1];
-        for (int i = 0; i < records.Length - 1; i++)
+        string[] records, fields;
+        records = sr.ReadToEnd().Split('#');
+        Book[] books = new Book[records.Length-1];
+        for (int i = 0; i < records.Length-1 ; i++)
         {
             fields = records[i].Split('@');  //to split each record into fields
             if (fields.Length <= 1) continue;
@@ -49,6 +47,11 @@ static public class BooksFunctions
         }
         FileStream Fs = new FileStream("Book.txt", FileMode.Open);
         StreamReader sr = new StreamReader(Fs);
+        if (Fs.Length == 0)                        //If the Books File exists but it's empty
+        {
+            sr.Close();
+            return null;
+        }
         string[] records, fields;
         int[] saver = new int[100];  //is used if their are more than 1 record to be displayed
         int x = 0;
